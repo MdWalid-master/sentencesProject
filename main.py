@@ -37,6 +37,26 @@ def generate_model(liste_fichiers):
     create_file_model(treegramme_model, 'tree')
 
 
+def generate_sentence():
+    def get_model(fic):
+        with open("model_" + fic + "_gramme.txt", "r", encoding="utf-8") as f:
+            return f.readlines()
+
+    def get_sentence(model, mot):
+        sentence = ""
+        for i in range(0, 5):
+            for words in model:
+                w = re.split(" |:", words)
+                if mot == w[0]:
+                    sentence += mot + " "
+                    mot = w[1]
+                    break
+        return sentence
+
+    print(get_sentence(get_model("bi"), "f"))
+    print(get_sentence(get_model("tree"), "f"))
+
+
 if __name__ == '__main__':
     dic_path_fichiers = []
 
@@ -50,4 +70,5 @@ if __name__ == '__main__':
         for repertoire in paths:
             path_fic.extend([repertoire + "\\" + fic for fic in paths[repertoire][:2]])
 
-    generate_model(path_fic)
+    # generate_model(path_fic)
+    generate_sentence()
