@@ -1,13 +1,16 @@
-
 import re
+import pandas as pd
+import numpy as np
 
 
-#trasformation de la table associative sous forme d'un dictionnaire {'POS': [liste de mots]}
-dicTableAssociative = {}
-with open("data/TableAssociative.txt", "r", encoding="utf-8") as f:
-    for line in f.readlines():
-        lineContent = list(filter(('').__ne__,re.split("\t|\n",line)))
-        dicTableAssociative[lineContent[0]] = lineContent[1:]
+def function_get_embbeding():
+    dic_embedding = {}
+    with open("data/embeddings-Fr.txt", "r", encoding="utf-8") as f:
+        for line in f.readlines():
+            l = re.findall("-*\w+\.*\d*e*-*\+*\d*", line)
+            dic_embedding[l[0]] = l[1:]
 
-with open("data/TableAssociativeDict.txt", "w", encoding="utf-8") as f:
-    f.write(str(dicTableAssociative))
+    data_embedding = pd.DataFrame(dic_embedding).astype('float64')
+    data_embedding.to_csv("data/embeddingsDict.csv", sep='\t', encoding='utf-8', index=False)
+
+    return data_embedding
