@@ -41,14 +41,22 @@ words = get_words_templates()
 table_associative = function_get_table_associative_csv()
 embbeding = function_get_embbeding()
 
-col = table_associative[[words[0]]].dropna()
-col = col[col[words[0]] != query]
+col = table_associative[(table_associative[words[0]] != query) & (table_associative[words[1]] != query)]
+col = col[words]
+
+# col = table_associative[[words]]
+# col = col.drop(col.index[col[words[0]] == query], inplace = True)
+# col = col.drop(col.index[col[words[1]] == query], inplace = True)
+# col = col.reset_index()
+# col = col[col[words[0]] != query]
+# col = col[col[words[1]] != query]
+
 query_data = embbeding[[query]]
 
 #print(col)
 
 best_word = {}
-for c in col[words[0]] :
+for c in col[words[0]].dropna() :
     if c in embbeding.columns :
         word_vector =  embbeding[[c]]
         val_cosine = 1 - cosine(word_vector,query_data)
@@ -56,12 +64,18 @@ for c in col[words[0]] :
 
 
 word_optimal = max(best_word.items(), key=operator.itemgetter(1))
+best_word.clear()
+print("Best word for "+words[0]+" is "+str(word_optimal))
 
-print(word_optimal)
+for c in col[words[1]].dropna() :
+    if c in embbeding.columns :
+        word_vector =  embbeding[[c]]
+        val_cosine = 1 - cosine(word_vector,query_data)
+        best_word[c] = val_cosine
 
-# best_word = None
-# for c in col :
-#     val = 1 - cosine(c,query_data)
-#     if best_word is None :
-#         best_word = {}
+
+word_optimal = max(best_word.items(), key=operator.itemgetter(1))
+best_word.clear()
+print("Best word for "+words[1]+" is "+str(word_optimal))
+
 
