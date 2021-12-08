@@ -1,3 +1,4 @@
+import operator
 import re
 import pandas as pd
 from scipy.spatial.distance import cosine
@@ -37,12 +38,30 @@ def get_words_templates():
 
 query = 'tristesse'
 words = get_words_templates()
-# table_associative = function_get_table_associative_csv()
+table_associative = function_get_table_associative_csv()
 embbeding = function_get_embbeding()
 
-# col = table_associative[words[0]].dropna()
-# print(col)
+col = table_associative[[words[0]]].dropna()
+col = col[col[words[0]] != query]
+query_data = embbeding[[query]]
 
-col = embbeding[['impatience', 'tristesses', 'tristesse']]
-print(cosine(col[["tristesse", "impatience"]],col["tristesse"])),
+#print(col)
+
+best_word = {}
+for c in col[words[0]] :
+    if c in embbeding.columns :
+        word_vector =  embbeding[[c]]
+        val_cosine = 1 - cosine(word_vector,query_data)
+        best_word[c] = val_cosine
+
+
+word_optimal = max(best_word.items(), key=operator.itemgetter(1))
+
+print(word_optimal)
+
+# best_word = None
+# for c in col :
+#     val = 1 - cosine(c,query_data)
+#     if best_word is None :
+#         best_word = {}
 
