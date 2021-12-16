@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from operator import itemgetter
 from scipy.spatial.distance import cosine
-from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import euclidean, pdist, squareform
 
 
 # trasformation de la table associative sous forme d'un dictionnaire {'POS': [liste de mots]}
@@ -53,53 +53,60 @@ def set_replace_pos_in_template(optimal, templates):
         text = "".join(re.split(r"/\w*", "".join(f.readlines())))
         for i in range(0, len(optimal)):
             for j in range(0, len(optimal[i])):
-                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j][0] + ")")
+                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")")
 
         print(text)
 
 
 def get_best_words(query, table_associative, embbeding, templates):
     optimal_template_word = []
+
     for template in templates:  # Pour chaque phrase du template
         query_data = embbeding[query]  # Récupérer le vecteur de la query
         words_optimal = []
-        print("template")
+
         for pos in template:
             tag_words = table_associative[pos[0]].dropna()  # Récupérer les mots du tags dans la table associative
             word_max_distance = pos[1]  # S'éloigner de ce mot
             best_word = {}  # Dictionnaire contenant
+            dic = {}
 
             for word in tag_words:  # Pour chaque mot
                 # Si le mot est un vecteur dans embedding et les mots max aussi
+
                 if word in embbeding.columns and word_max_distance in embbeding.columns \
-                        and word != word_max_distance and word != query:
+                        and word != word_max_distance and word != query and word not in words_optimal:
 
-                    """
-                        - cosine : Consinus
-                            * Produit des mots incohérents pour tristesse
-                            * Produit des mots cohérents pour fidelité
-                            * 1 - cosine pour la similarité
-                            * cosine pour la distance
+                    min_val = cosine(embbeding[word], query_data)  # Calculer la distance par rapport au query
+                    max_val = cosine(embbeding[word], embbeding[word_max_distance])
 
-                        - euclidean : Distance euclidienne
-                            * Produit des mots cohérent
-                    """
+                    if min_val < max_val:
+                        best_word[word] = max_val - min_val
 
-                    min_val_cosine = euclidean(embbeding[word], query_data)  # Calculer la distance par rapport au query
-                    max_val_cosine = euclidean(embbeding[word], embbeding[word_max_distance])
+                    # if max_val < min_val:
+                    #     best_word[word] = min_val
 
-                    # -------------------------- Refaire cette partie ----------------------------
-                    for last_optimal_word in words_optimal:
-                        min_val_cosine = abs(min_val_cosine - euclidean(embbeding[word], embbeding[last_optimal_word]))
+            # -------------------------- Refaire cette partie ---------------------------- for for
+            if len(words_optimal) != 0:
+                for optimal_word in words_optimal:
+                    for word_key in best_word.items():
+                        if word_key[0] in dic:
+                            dic[word_key[0]] += cosine(embbeding[word_key[0]], embbeding[optimal_word])
+                        else:
+                            dic[word_key[0]] = cosine(embbeding[word_key[0]], embbeding[optimal_word])
 
-                    best_word[word] = max_val_cosine - min_val_cosine
-                    # -----------------------------------------------------------------------------
-
-            words_optimal.append(max(best_word.items(), key=operator.itemgetter(1))[0])
+                words_optimal.append(min(dic.items(), key=operator.itemgetter(1))[0])
+            else:
+                dic = best_word
+                words_optimal.append(max(dic.items(), key=operator.itemgetter(1))[0])
 
         optimal_template_word.append(words_optimal)
 
     return optimal_template_word
+
+
+def with_model():
+    pass
 
 
 if __name__ == '__main__':
