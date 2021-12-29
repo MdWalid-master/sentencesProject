@@ -48,14 +48,20 @@ def get_words_templates():
         return templates
 
 
-def set_replace_pos_in_template(optimal, templates):
+def set_replace_pos_in_template(optimal, templates, query):
     with open("data/templates_basiques.txt", "r", encoding="utf-8") as f:
         text = "".join(re.split(r"/\w*", "".join(f.readlines())))
+        print(text)
         for i in range(0, len(optimal)):
             for j in range(0, len(optimal[i])):
-                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")")
+                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")", 1)
 
+        text = text.replace("\n", "\t" + query + "\n")
         print(text)
+
+        with open("data/Resultat.txt", "w", encoding="utf-8") as f:
+            f.write(text)
+        f.close()
 
 
 def get_best_words(query, table_associative, embbeding, templates):
@@ -127,4 +133,4 @@ if __name__ == '__main__':
                              table_associative=table_associative, templates=templates)
 
     print(optimal)
-    # set_replace_pos_in_template(optimal=optimal, templates=templates)
+    set_replace_pos_in_template(optimal=optimal, templates=templates, query=query)
