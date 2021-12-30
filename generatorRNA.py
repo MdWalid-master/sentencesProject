@@ -47,7 +47,7 @@ def get_words_templates():
         templates = []
         for line in f.readlines():
             pos = []
-            for sentence in re.findall(r'[^\_]\*\w+/*\w*', line):
+            for sentence in re.findall(r'\*\w+/*\w*', line):
                 words = re.findall(r"\w+", sentence)
                 pos.append((words[0], words[1]))
 
@@ -61,9 +61,14 @@ def set_replace_pos_in_template(optimal, templates):
         text = "".join(re.split(r"/\w*", "".join(f.readlines())))
         for i in range(0, len(optimal)):
             for j in range(0, len(optimal[i])):
-                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")", 1)
+                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")")
 
+        text = text.replace("\n", "\t" + query + "\n")
         print(text)
+
+        with open("data/Resultat.txt", "w", encoding="utf-8") as f:
+            f.write(text)
+        f.close()
 
 
 def get_best_words(query, table_associative, embbeding, templates):
@@ -78,6 +83,7 @@ def get_best_words(query, table_associative, embbeding, templates):
             word_max_distance = pos[1]  # S'éloigner de ce mot
             best_word = {}              # Dictionnaire contenant
             dic = {}
+
             for word in tag_words:  # Pour chaque mot
                 # Si le mot est un vecteur dans embedding et les mots max aussi
 
@@ -90,6 +96,10 @@ def get_best_words(query, table_associative, embbeding, templates):
                     if min_val < max_val:
                         best_word[word] = max_val - min_val
 
+                    # if max_val < min_val:
+                    #     best_word[word] = min_val
+
+            # -------------------------- Refaire cette partie ---------------------------- for for
             if len(words_optimal) != 0:
                 for optimal_word in words_optimal:
                     for word_key in best_word.items():
@@ -117,8 +127,6 @@ if __name__ == '__main__':
 
     # Récupérer les pos de chaque phrase du template sous form [[('tag' : mot),('tag' : mot)],[]
     templates = get_words_templates()
-    print(templates)
-
     embbeding = function_get_embbeding()  # Récupérer les vecteurs de mots dans embedding
 
     if query not in embbeding.columns:
@@ -132,4 +140,4 @@ if __name__ == '__main__':
                              table_associative=table_associative, templates=templates)
 
     print(optimal)
-    set_replace_pos_in_template(optimal=optimal, templates=templates)
+    set_replace_pos_in_template(optimal=optimal, templates=templates, query=query)
