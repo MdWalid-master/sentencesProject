@@ -1,35 +1,30 @@
-Il n' y a pas_de (amante) sans (amant) .	amour
-Il n' y a ni (follette) ni (doucette) en (rainette) .	amour
-En (amante) , la (amoureuse) (ingénue) (aimante) la plus (innocente)	amour
-La (amante) (captive) une (Captive) .	amour
-L' (coeur) de les (Gouttes) (exacerbe) à la (pamée) ce_que la (étincele) (endeuille) à l' (tourtereau) .	amour
-Les (incarnat) de (étamines) (chatoient) de la (pruine) ce_que les (veinules) (rosissent) de l' (balisier) .	amour
-	amour
-Il n' y a pas_de (angoisse) sans (effroi) .	tristesse
-Il n' y a ni (Tremblante) ni (Mourante) en (Furieuse) .	tristesse
-En (angoisse) , la (poignante) (douloureuse) (détresse) la plus (déchirante)	tristesse
-La (angoisse) (détresse) une (douleur) .	tristesse
-L' (effroi) de les (alarmes) (remord) à la (douleur) ce_que la (horreur) (affre) à l' (tourment) .	tristesse
-Les (remords) de (angoisses) (oppressent) de la (souffrance) ce_que les (douleurs) (échappoient) de l' (navrement) .	tristesse
-	tristesse
-Il n' y a pas_de (allégresse) sans (enthousiasme) .	joie
-Il n' y a ni (follette) ni (doucette) en (rainette) .	joie
-En (allégresse) , la (délirante) (ivresse) (délire) la plus (exultante)	joie
-La (allégresse) (délire) une (ivresse) .	joie
-L' (effroi) de les (alarmes) (remord) à la (douleur) ce_que la (horreur) (affre) à l' (tourment) .	joie
-Les (pleurs) de (larmes) (couloient) de la (Abomination) ce_que les (nacottes) (observoient) de l' (enfloit) .	joie
-	joie
-Il n' y a pas_de (rage) sans (désespoir) .	haine
-Il n' y a ni (jalouse) ni (repentie) en (mécontente) .	haine
-En (rage) , la (furieuse) (fureur) (révolte) la plus (haineuse)	haine
-La (rage) (révolte) une (fureur) .	haine
-L' (désespoir) de les (angoisses) (délire) à la (angoisse) ce_que la (douleur) (détresse) à l' (effroi) .	haine
-Les (remords) de (angoisses) (oppressent) de la (souffrance) ce_que les (douleurs) (échappoient) de l' (navrement) .	haine
-	haine
-Il n' y a pas_de (bleue) sans (liséré) .	bleu
-Il n' y a ni (bleue) ni (floconneuse) en (violacée) .	bleu
-En (bleue) , la (blanche) (floconneuse) (grise) la plus (noire)	bleu
-La (bleue) (grise) une (floconneuse) .	bleu
-L' (vert) de les (cannetilles) (pistache) à la (tiretaine) ce_que la (brocatelle) (garance) à l' (nacarat) .	bleu
-Les (gris) de (molletières) (bruissaillent) de la (myrtille) ce_que les (gabardines) (ébouriffent) de l' (pilou) .	bleu
-	bleu
+Il n' y a pas de amante sans amant .	amour
+Il n' y a ni follette ni doucette en rainette .	amour
+En amante , la amoureuse ingénue aimante la plus innocente	amour
+La amante captive une Captive .	amour
+L' coeur de les Gouttes exacerbe à la pamée ce_que la étincele endeuille à l' tourtereau .	amour
+Les incarnat de étamines chatoient de la pruine ce_que les veinules rosissent de l' balisier .	amour
+Il n' y a pas_de angoisse sans effroi .	tristesse
+Il n' y a ni Tremblante ni Mourante en Furieuse .	tristesse
+En angoisse , la poignante douloureuse détresse la plus déchirante	tristesse
+La angoisse détresse une douleur .	tristesse
+L' effroi de les alarmes remord à la douleur ce_que la horreur affre à l' tourment .	tristesse
+Les remords de angoisses oppressent de la souffrance ce_que les douleurs échappoient de l' navrement .	tristesse
+Il n' y a pas_de allégresse sans enthousiasme .	joie
+Il n' y a ni follette ni doucette en rainette .	joie
+En allégresse , la délirante ivresse délire la plus exultante	joie
+La allégresse délire une ivresse .	joie
+L' effroi de les alarmes remord à la douleur ce_que la horreur affre à l' tourment .	joie
+Les pleurs de larmes couloient de la Abomination ce_que les nacottes observoient de l' enfloit .	joie
+Il n' y a pas_de rage sans désespoir .	haine
+Il n' y a ni jalouse ni repentie en mécontente .	haine
+En rage , la furieuse fureur révolte la plus haineuse	haine
+La rage révolte une fureur .	haine
+L' désespoir de les angoisses délire à la angoisse ce_que la douleur détresse à l' effroi .	haine
+Les remords de angoisses oppressent de la souffrance ce_que les douleurs échappoient de l' navrement .	haine
+Il n' y a pas_de bleue sans liséré .	bleu
+Il n' y a ni bleue ni floconneuse en violacée .	bleu
+En bleue , la blanche floconneuse grise la plus noire	bleu
+La bleue grise une floconneuse .	bleu
+L' vert de les cannetilles pistache à la tiretaine ce_que la brocatelle garance à l' nacarat .	bleu
+Les gris de molletières bruissaillent de la myrtille ce_que les gabardines ébouriffent de l' pilou .	bleu
