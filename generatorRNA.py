@@ -5,14 +5,8 @@ from operator import itemgetter
 from scipy.spatial.distance import cosine
 from scipy.spatial.distance import euclidean, pdist, squareform
 
-"""
-    1- Récuprer convenablement les templates 
-    2- Intégrer les modèles 
-    3- Replacer convenablement les mots dans leurs phrases adéqute
-"""
 
-
-# trasformation de la table associative sous forme d'un dictionnaire {'POS': [liste de mots]}
+# trasformation de la table associative sous forme d'un dataframe {'POS': [liste de mots]}
 def function_get_table_associative():
     dicTableAssociative = {}
     with open("data/TableAssociative.txt", "r", encoding="utf-8") as f:
@@ -27,7 +21,7 @@ def function_get_table_associative():
     return dataframe
 
 
-# Récupérer les embbeding sous forme d'un datafram
+# trasformation des embeddings sous forme d'un dataframe {'mot': [vecteur]}
 def function_get_embbeding():
     dic_embedding = {}
     with open("data/embeddings-Fr.txt", "r", encoding="utf-8") as f:
@@ -41,7 +35,7 @@ def function_get_embbeding():
     return data_embedding
 
 
-# Décomposer les mots eloigner
+# Extraire les Theme des templates
 def get_words_templates():
     with open("data/templates_basiques_2.txt", "r", encoding="utf-8") as f:
         templates = []
@@ -55,89 +49,92 @@ def get_words_templates():
 
         return templates
 
-
-def set_replace_pos_in_template(optimal, templates):
+# Replacer les mot génerer (TA) par la POS approprié
+def set_replace_pos_in_template(optimal, templates, query):
     with open("data/templates_basiques_2.txt", "r", encoding="utf-8") as f:
         text = "".join(re.split(r"/\w*", "".join(f.readlines())))
         for i in range(0, len(optimal)):
             for j in range(0, len(optimal[i])):
-                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")")
+                text = text.replace("*" + templates[i][j][0], "(" + optimal[i][j] + ")", 1)
 
         text = text.replace("\n", "\t" + query + "\n")
         print(text)
 
-        with open("data/Resultat.txt", "w", encoding="utf-8") as f:
+        #sauvegarde des phrases generées dans un fichier txt
+        with open("data/Resultat.txt", "a", encoding="utf-8") as f:
             f.write(text)
         f.close()
 
-
+# Géneration de l'ensemble des mots optimaux (TA) pour chaque phrase
 def get_best_words(query, table_associative, embbeding, templates):
-    optimal_template_word = []
+    optimal_template_word = [] #liste des mots optimaux
 
     for template in templates:      # Pour chaque phrase du template
         query_data = embbeding[query]   # Récupérer le vecteur de la query
         words_optimal = []
 
         for pos in template:
-            tag_words = table_associative[pos[0]].dropna()  # Récupérer les mots du tags dans la table associative
-            word_max_distance = pos[1]  # S'éloigner de ce mot
-            best_word = {}              # Dictionnaire contenant
+            tag_words = table_associative[pos[0]].dropna()  # Récupérer les mots du tags (POS) dans la table associative (dataframe)
+            word_max_distance = pos[1]  # S'éloigner de ce mot (theme)
+            best_word = {}
             dic = {}
 
+            #print(word_max_distance, " et :", word_max_distance in embbeding.columns)
+
             for word in tag_words:  # Pour chaque mot
+
                 # Si le mot est un vecteur dans embedding et les mots max aussi
+                if word in embbeding.columns and word != word_max_distance and word not in words_optimal and word != query:
 
-                if word in embbeding.columns and word_max_distance in embbeding.columns \
-                        and word != word_max_distance and word != query and word not in words_optimal:
+                    """ gynécologie n'est pas present dans les embedding 
+                    le cas ou la query est amour ainsi que le theme en prend pas en cosideration le fait que le mot à generer il faut qu'il soit loin du theme """
+                    if (word_max_distance == "gynécologie") or (word_max_distance == query):
+                        best_word[word] = cosine(embbeding[word],query_data)  # Calculer la distance par rapport au query
 
-                    min_val = euclidean(embbeding[word], query_data)  # Calculer la distance par rapport au query
-                    max_val = euclidean(embbeding[word], embbeding[word_max_distance])
+                    elif word_max_distance in embbeding.columns :
 
-                    if min_val < max_val:
-                        best_word[word] = max_val - min_val
+                        min_val = cosine(embbeding[word], query_data)  # Calculer la distance par rapport au query
+                        max_val = cosine(embbeding[word], embbeding[word_max_distance]) # Calculer la distance par rapport au theme
 
-                    # if max_val < min_val:
-                    #     best_word[word] = min_val
+                        if min_val < max_val:
+                            best_word[word] = max_val - min_val
 
-            # -------------------------- Refaire cette partie ---------------------------- for for
-            if len(words_optimal) != 0:
+
+            if len(words_optimal) != 0: #afin de calculer la distance du TA a generer avec les TA deja generer
                 for optimal_word in words_optimal:
                     for word_key in best_word.items():
                         if word_key[0] in dic:
-                            dic[word_key[0]] += euclidean(embbeding[word_key[0]], embbeding[optimal_word])
+                            dic[word_key[0]] += cosine(embbeding[word_key[0]], embbeding[optimal_word])
                         else:
-                            dic[word_key[0]] = euclidean(embbeding[word_key[0]], embbeding[optimal_word])
+                            dic[word_key[0]] = cosine(embbeding[word_key[0]], embbeding[optimal_word])
                 if dic:
                     words_optimal.append(min(dic.items(), key=operator.itemgetter(1))[0])
-            else:
+            else: #dans le cas ou c'est le premier TA a generer
                 if best_word:
                     words_optimal.append(max(best_word.items(), key=operator.itemgetter(1))[0])
 
-        optimal_template_word.append(words_optimal)
+        optimal_template_word.append(words_optimal) #ajouter le TA generer dans la liste des mots optimaux
 
     return optimal_template_word
 
 
-def with_model():
-    pass
-
 
 if __name__ == '__main__':
-    query = 'tristesse'
+    query = ['amour','tristesse', 'joie', 'haine', 'bleu']
 
     # Récupérer les pos de chaque phrase du template sous form [[('tag' : mot),('tag' : mot)],[]
     templates = get_words_templates()
     embbeding = function_get_embbeding()  # Récupérer les vecteurs de mots dans embedding
 
-    if query not in embbeding.columns:
-        raise Exception("La query n'existe pas !")
-
     table_associative = function_get_table_associative()  # Récupérer la table associative
 
-    print("words templates : ", templates)
+    #print("words templates : ", templates)
+    for q in query:
+        if q not in embbeding.columns:
+            raise Exception("La query n'existe pas !")
 
-    optimal = get_best_words(query=query, embbeding=embbeding,
-                             table_associative=table_associative, templates=templates)
+        optimal = get_best_words(query=q, embbeding=embbeding,
+                                 table_associative=table_associative, templates=templates)
 
-    print(optimal)
-    set_replace_pos_in_template(optimal=optimal, templates=templates, query=query)
+        print(optimal)
+        set_replace_pos_in_template(optimal=optimal, templates=templates, query=q)
