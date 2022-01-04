@@ -1,0 +1,73 @@
+
+*****************************euclidienne***************************************
+
+Il n' y a pas_de (amante) sans (amant) .	amour
+Il n' y a ni (ACTRICE) ni (ROSETTE) en (MADELEINE) .	amour
+En (amante) , la (Captive) (Imprudente) (consacroit) la plus (félonne)	amour
+La (amante) (captive) une (Captive) .	amour
+L' (coeur) de les (Gouttes) (endeuille) à la (halette) ce_que la (étincele) (apesantit) à l' (encor) .	amour
+Les (incarnat) de (étamines) (chatoient) de la (pruine) ce_que les (veinules) (moirent) de l' (desserrement) .	amour
+Il n' y a pas_de (amante) sans (amant) .	amour
+Il n' y a ni (ACTRICE) ni (ROSETTE) en (MADELEINE) .	amour
+En (amante) , la (Captive) (Imprudente) (consacroit) la plus (félonne)	amour
+La (amante) (captive) une (Captive) .	amour
+L' (coeur) de les (Gouttes) (endeuille) à la (halette) ce_que la (étincele) (apesantit) à l' (encor) .	amour
+Les (incarnat) de (étamines) (chatoient) de la (pruine) ce_que les (veinules) (moirent) de l' (desserrement) .	amour
+Il n' y a pas_de (mélancolie) sans (navrement) .	tristesse
+Il n' y a ni (amère) ni (douloureuse) en (affreuse) .	tristesse
+En (mélancolie) , la (exultante) (Indécise) (dévoroit) la plus (désirante)	tristesse
+La (mélancolie) (morbidesse) une (morosité) .	tristesse
+L' (effroi) de les (géhennes) (Surmonte) à la (rescif) ce_que la (étincele) (apesantit) à l' (regret) .	tristesse
+Les (remords) de (rancoeurs) (échappoient) de la (insatiabilité) ce_que les (vénustés) (déchiroient) de l' (navrement) .	tristesse
+Il n' y a pas_de (allégresse) sans (enthousiasme) .	joie
+Il n' y a ni (joyeuse) ni (tapageuse) en (viennoise) .	joie
+En (allégresse) , la (étourdissante) (balourde) (interloque) la plus (approbatrice)	joie
+La (allégresse) (Entonne) une (hurlée) .	joie
+L' (ravissement) de les (délices) (jongle) à la (féminéité) ce_que la (aiglonne) (Ressent) à l' (bonheur) .	joie
+Les (pleurs) de (larmes) (couloient) de la (seche) ce_que les (recueillois) (observoient) de l' (évanoüir) .	joie
+Il n' y a pas_de (fureur) sans (emportement) .	haine
+Il n' y a ni (jalouse) ni (envieuse) en (Imprudente) .	haine
+En (fureur) , la (Insensée) (calomniatrice) (Réprime) la plus (iroquoise)	haine
+La (fureur) (révolte) une (colère) .	haine
+L' (dégoût) de les (Langueurs) (Empoisonne) à la (insatiabilité) ce_que la (étrangleuse) (réfrène) à l' (orgueil) .	haine
+Les (remords) de (rancoeurs) (échappoient) de la (insatiabilité) ce_que les (dénonciatrices) (suffoquoient) de l' (potéra) .	haine
+Il n' y a pas_de (bleue) sans (liséré) .	bleu
+Il n' y a ni (bleue) ni (floconneuse) en (violacée) .	bleu
+En (bleue) , la (blanche) (floconneuse) (grise) la plus (noire)	bleu
+La (bleue) (grise) une (floconneuse) .	bleu
+L' (vert) de les (cannetilles) (roussit) à la (bouffette) ce_que la (myrtille) (versicolore) à l' (ruché) .	bleu
+Les (gris) de (soutaches) (bruissaillent) de la (myrtille) ce_que les (chéchias) (ébouriffent) de l' (versicolore) .	bleu
+
+
+******************************* Cosine ****************************************
+
+Il n' y a pas_de (amante) sans (amant) .	amour
+Il n' y a ni (follette) ni (doucette) en (rainette) .	amour
+En (amante) , la (amoureuse) (ingénue) (aimante) la plus (innocente)	amour
+La (amante) (captive) une (Captive) .	amour
+L' (coeur) de les (Gouttes) (exacerbe) à la (pamée) ce_que la (étincele) (endeuille) à l' (tourtereau) .	amour
+Les (incarnat) de (étamines) (chatoient) de la (pruine) ce_que les (veinules) (rosissent) de l' (balisier) .	amour
+Il n' y a pas_de (angoisse) sans (effroi) .	tristesse
+Il n' y a ni (Tremblante) ni (Mourante) en (Furieuse) .	tristesse
+En (angoisse) , la (poignante) (douloureuse) (détresse) la plus (déchirante)	tristesse
+La (angoisse) (détresse) une (douleur) .	tristesse
+L' (effroi) de les (alarmes) (remord) à la (douleur) ce_que la (horreur) (affre) à l' (tourment) .	tristesse
+Les (remords) de (angoisses) (oppressent) de la (souffrance) ce_que les (douleurs) (échappoient) de l' (navrement) .	tristesse
+Il n' y a pas_de (allégresse) sans (enthousiasme) .	joie
+Il n' y a ni (follette) ni (doucette) en (rainette) .	joie
+En (allégresse) , la (délirante) (ivresse) (délire) la plus (exultante)	joie
+La (allégresse) (délire) une (ivresse) .	joie
+L' (effroi) de les (alarmes) (remord) à la (douleur) ce_que la (horreur) (affre) à l' (tourment) .	joie
+Les (pleurs) de (larmes) (couloient) de la (Abomination) ce_que les (nacottes) (observoient) de l' (enfloit) .	joie
+Il n' y a pas_de (rage) sans (désespoir) .	haine
+Il n' y a ni (jalouse) ni (repentie) en (mécontente) .	haine
+En (rage) , la (furieuse) (fureur) (révolte) la plus (haineuse)	haine
+La (rage) (révolte) une (fureur) .	haine
+L' (désespoir) de les (angoisses) (délire) à la (angoisse) ce_que la (douleur) (détresse) à l' (effroi) .	haine
+Les (remords) de (angoisses) (oppressent) de la (souffrance) ce_que les (douleurs) (échappoient) de l' (navrement) .	haine
+Il n' y a pas_de (bleue) sans (liséré) .	bleu
+Il n' y a ni (bleue) ni (floconneuse) en (violacée) .	bleu
+En (bleue) , la (blanche) (floconneuse) (grise) la plus (noire)	bleu
+La (bleue) (grise) une (floconneuse) .	bleu
+L' (vert) de les (cannetilles) (pistache) à la (tiretaine) ce_que la (brocatelle) (garance) à l' (nacarat) .	bleu
+Les (gris) de (molletières) (bruissaillent) de la (myrtille) ce_que les (gabardines) (ébouriffent) de l' (pilou) .	bleu
